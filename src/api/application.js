@@ -11,12 +11,18 @@ class ApplicationApi {
   }
 
   to(destination) {
+    this.destination = destination;
+    return this;
+  }
+
+  atIndex(index = 0) {
     this.api.ws.send(
       JSON.stringify({
         controller: "JobOffers",
         action: "move",
         user: this.userToMove,
-        destination
+        destination: this.destination,
+        index
       })
     );
   }

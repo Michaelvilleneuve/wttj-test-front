@@ -7,17 +7,16 @@ import Column from "./Column";
 
 export default class Columns extends Component {
   onDragEnd({ draggableId, destination }) {
-    if (destination) {
-      ApplicationApi.move(draggableId).to(destination.droppableId);
-    }
+    if (!destination) return;
+
+    ApplicationApi.move(draggableId)
+      .to(destination.droppableId)
+      .atIndex(destination.index);
   }
 
   render() {
     return (
-      <DragDropContext
-        onDragUpdate={this.onDragUpdate}
-        onDragEnd={this.onDragEnd}
-      >
+      <DragDropContext onDragEnd={this.onDragEnd}>
         <Container>
           {this.props.columns.map(column => (
             <Column
