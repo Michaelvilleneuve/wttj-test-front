@@ -11,12 +11,14 @@ class ApplicationApi {
   }
 
   to(destination) {
-    this.api.ws.send({
-      move: {
-        user: this.userName,
+    this.api.ws.send(
+      JSON.stringify({
+        controller: "JobOffers",
+        action: "move",
+        user: this.userToMove,
         destination
-      }
-    });
+      })
+    );
   }
 }
 
