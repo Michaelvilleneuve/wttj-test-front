@@ -2,20 +2,13 @@ import React, { Component } from "react";
 import { hot, setConfig } from "react-hot-loader";
 import JobOffer from "./JobOffer";
 
-import Data from "../api";
+import api from "../api";
 
 setConfig({ logLevel: "debug" });
 
 class Root extends Component {
   componentDidMount() {
-    Data.connect({
-      url: "ws://localhost:4567",
-      onRefresh: data => this.onMessage(data)
-    });
-  }
-
-  onMessage(jobOffer) {
-    this.setState({ jobOffer });
+    api.onRefresh(jobOffer => this.setState({ jobOffer }));
   }
 
   render() {
