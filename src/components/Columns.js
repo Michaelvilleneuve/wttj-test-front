@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Column from "./Column";
 import { DragDropContext } from "react-beautiful-dnd";
+import styled from "styled-components";
 
 import ApplicationApi from "../api/application";
+import Column from "./Column";
 
 export default class Columns extends Component {
   onDragEnd({ draggableId, destination }) {
@@ -17,7 +18,7 @@ export default class Columns extends Component {
         onDragUpdate={this.onDragUpdate}
         onDragEnd={this.onDragEnd}
       >
-        <div className="columns">
+        <Container>
           {this.props.columns.map(column => (
             <Column
               key={column.name}
@@ -25,8 +26,15 @@ export default class Columns extends Component {
               applications={column.applications}
             />
           ))}
-        </div>
+        </Container>
       </DragDropContext>
     );
   }
 }
+
+const Container = styled.div`
+  height: 100vh;
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: row;
+`;
