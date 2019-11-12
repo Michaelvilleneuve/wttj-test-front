@@ -1,6 +1,13 @@
-export default class Api {
-  static connect(params) {
-    const ws = new WebSocket(params.url);
-    ws.onmessage = ({ data }) => params.onRefresh(JSON.parse(data));
+import config from "../config";
+
+class Api {
+  constructor({ url }) {
+    this.ws = new WebSocket(url);
+  }
+
+  onRefresh(fn) {
+    this.ws.onmessage = ({ data }) => fn(JSON.parse(data));
   }
 }
+
+export default new Api(config);
