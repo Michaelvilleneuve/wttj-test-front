@@ -19,11 +19,7 @@ export default class Columns extends Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Container>
           {this.props.columns.map(column => (
-            <Column
-              key={column.name}
-              name={column.name}
-              applications={column.applications}
-            />
+            <Column key={column.name} {...column} />
           ))}
         </Container>
       </DragDropContext>

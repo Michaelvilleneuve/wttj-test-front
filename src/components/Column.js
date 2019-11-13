@@ -7,7 +7,10 @@ export default class Column extends Component {
   render() {
     return (
       <Container>
-        <ColumnTitle>{this.props.name}</ColumnTitle>
+        <Metas>
+          <Title>{this.props.name}</Title>
+          <Count>{this.props.size}</Count>
+        </Metas>
         <Applications
           columnName={this.props.name}
           applications={this.props.applications}
@@ -26,7 +29,19 @@ const Container = styled.div`
   border: 1px solid #e8e8e8;
   box-shadow: 0px 2px 10px #e8e8e8;
 `;
-const ColumnTitle = styled.h4`
-  padding: 1rem;
+const Title = styled.h4``;
+const Count = styled.span`
+  background-color: rgb(175, 195, 225);
+  border-radius: 1rem;
+  color: #fff;
+  padding: 0.5rem;
+  width: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+`;
+const Metas = styled.div`
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid #e8e8e8;
+  padding: 1rem;
 `;
