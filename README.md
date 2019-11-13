@@ -16,4 +16,5 @@ A list of things I would be improving in an actual project :
 - Typings starts to feel like a good idea
 - Some functional tests would be great
 - Per env config/deployment/ci management
+- Prettier and linter
 - Style of course !
